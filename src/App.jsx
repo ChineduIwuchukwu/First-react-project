@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Fragment } from "react";
+// import { Fragment } from "react";
 import List from "./list";
 import Input from "./Input";
 import Buttonb from "./Buttonb";
@@ -32,9 +32,9 @@ function App() {
 
   // event.target.value is used to catch whatever data that is inputted by a user
 
-  const [value, setValue] = useState(" ");
+  const [value, setValue] = useState("");
 
-  const [names, setNames] = useState(["Bob", "Paul", "Peter", "Mike", "Harry"]);
+  const [names, setNames] = useState([]);
 
   // use to append an element to the button
   const handleAddValue = () => {
@@ -43,16 +43,22 @@ function App() {
   };
 
   return (
-    <Fragment>
-      <h1> Dive Africa Reaxt App</h1>
-      <Input
-        value={value}
-        onChange={(event) => setValue(event.target.value)}
-        placeholder="Enter your name"
-      />
-      <Buttonb onClick={handleAddValue} />
-      <List names={names} />
-    </Fragment>
+    <div className="container">
+      <h1>Todo App</h1>
+      <form className="input-container">
+        <Input
+          value={value}
+          onChange={(event) => setValue(event.target.value)}
+          placeholder="Enter"
+        />
+
+        <Buttonb onClick={handleAddValue} />
+      </form>
+      <div>
+        <h3 className="task">TODAY'S TASK</h3>
+        <List names={names} />
+      </div>
+    </div>
   );
 }
 

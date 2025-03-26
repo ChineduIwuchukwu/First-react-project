@@ -14,6 +14,10 @@ const List = ({ names }) => {
     setActiveName(value);
   };
 
+  if (names.length === 0) {
+    return <p className="empty">Add Task for the Day!</p>;
+  }
+
   return (
     <ul>
       {names.map((item, index) => {
@@ -23,7 +27,8 @@ const List = ({ names }) => {
             className={activeName === item ? "list-item active" : "list-item"}
             onClick={() => handleClickItem(item)}
           >
-            {item}
+            <div className="priority-tag"></div>
+            <span>{item}</span>
           </li>
         );
       })}
